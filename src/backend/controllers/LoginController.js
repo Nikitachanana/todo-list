@@ -16,7 +16,11 @@ function signin(req,res){
             } else {
                 console.log("success")
                 req.session.userID = user.dataValues.id;
+<<<<<<< HEAD
                 res.redirect('/');
+=======
+                res.redirect("/");
+>>>>>>> 6ab4dbd0263af9918c5df5a68fc2ed86c206c6e5
             }
         });
     };

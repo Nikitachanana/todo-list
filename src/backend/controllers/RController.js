@@ -2,13 +2,13 @@ const dbConn = require("../databases/sqlite.js"); //Line1
 const User = dbConn.User; //Line2
 
 function signup(req, res) {
-      const { name, email, password } = req.body;         
+      const { name, email, password } = req.body;        
      if (!(name && email && password))                  
         return res.render("signup", {                    
           msg: "Please enter all the required details"
         });
       else {
-        User.create({           
+        User.create({          
           name,
           email,
           password
@@ -21,12 +21,13 @@ function signup(req, res) {
         console.log(user.dataValues.name)
         res.redirect('/');
     })
-    .catch(error => {
+        .catch(error => {
+        console.log("Error while signup =>\n",error);
         res.redirect('/signup');
     });
       }
     }
-    
+
 module.exports = {
     signup: signup
 };

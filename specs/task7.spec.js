@@ -9,11 +9,13 @@ describe("Functional Test: #start_test", function() {
     request(app)
       .post("/signin")
       .set("Accept", "application/json")
-      .send({ email: "john@wick.com", password: "mydog<3" })
-      .then(function(err, res) {
+      .send({ email: "led@zeppelin.com", password: "stairwaytoheaven" })
+      .then(function(res) {
+        Cookies = res.headers['set-cookie'];
         request(app)
           .post("/add")
           .send({ item: "My first item" })
+          .set('Cookie', Cookies)
           .set("Accept", "application/json")
           .end(function(err, res) {
             assert.equal(res.status, 302);
@@ -23,3 +25,4 @@ describe("Functional Test: #start_test", function() {
       });
   });
 });
+

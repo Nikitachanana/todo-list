@@ -40,10 +40,11 @@ function profile(req, res) {
         for(i of data){
             todo.push(i.dataValues)
         };
+        console.log("Todo for user is =>", todo);
         return res.render("profile",{
             todo : todo})
     }).catch(err => {
-        console.log(err)
+        console.log("Error in profile function is =>\n",err);
         return res.render("profile")
     });
 };
@@ -78,6 +79,7 @@ function addTodo(req, res) {
             req.session.todoID = todo.dataValues.id;
             res.redirect("/");
         }).catch(err => {
+            console.log("Error while creating todo=>\n", err);
             res.redirect("/");
         });
     }

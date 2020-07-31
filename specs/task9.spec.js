@@ -9,13 +9,11 @@ describe("Functional Test #start_test", function() {
     request(app)
       .post("/signin")
       .set("Accept", "application/json")
-      .send({ email: "john@wick.com", password: "mydog<3" })
+      .send({ email: "led@zeppelin.com", password: "stairwaytoheaven" })
       .end(function(err, res) {
-        if (err) return done(err);
         assert.equal(res.status, 302);
-        Cookies = res.header["set-cookie"];
-        assert.notEqual(Cookies, undefined);
-        console.log("The Cookie: " + Cookies);
+        let location = res.header["location"]
+        assert.equal(location, "/");
         done();
       });
   });
@@ -29,23 +27,16 @@ describe("Functional Test #start_test", function() {
       });
   });
   it("shouldn't create user session for invalid user #end_test", function(done) {
-    console.log("**************************************************************");
-    console.log("**************************************************************");
-    console.log("Before pushing your codes online delete your database file and\ncreate a user account with given credentials");
-    console.log("username:AnythingYouWant\nEmail-address:led@zeppelin.com\nPassword:stairwaytoheaven");
-    console.log("**************************************************************");
-    console.log("**************************************************************");
     request(app)
       .post("/signin")
       .set("Accept", "application/json")
       .send({ email: "linkin@park.com", password: "messi" })
-      .end(function(err, res) {
-        if (err) return done(err);
-        assert.equal(res.status, 302);
-        Cookies = res.header["set-cookie"];
-        assert.equal(Cookies, undefined);
-        console.log("The Cookie: " + Cookies);
-        done();
+          .end(function(err, res) {
+            assert.equal(res.status, 302);
+            let location = res.header["location"]
+            assert.equal(location, "/signin");
+            done();
       });
   });
 });
+
