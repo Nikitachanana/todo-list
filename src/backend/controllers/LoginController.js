@@ -16,7 +16,7 @@ function signin(req,res){
             } else {
                 console.log("success")
                 req.session.userID = user.dataValues.id;
-                res.render('profile');
+                res.redirect("/");
             }
         });
     };

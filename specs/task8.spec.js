@@ -11,8 +11,6 @@ const wget = require("wget-improved");
 const src = "http://localhost:4000";
 const output = "./signin2.html";
 
-let download = wget.download(src, output);
-
 const readData = path => {
   return new Promise((res, rej) => {
     fs.readFile(path, "utf8", (err, data) => {
@@ -27,14 +25,14 @@ const readData = path => {
 
 describe("Todo TC2 #start_test", function() {
   it("should check dummy", done => {
-    console.log("***************************************************************************************")
-    console.log("******Please run this test once again to pass the 'should check dummy' test case*******")
-    console.log("***************************************************************************************")
-    readData("./signin2.html").then(res => {
-      const create_data = res;
-      const dom = new JSDOM(create_data);
-      expect(2).to.equal(2);
-      done();
+    let download = wget.download(src, output);
+    download.on("end", function(output){
+      readData("./signin2.html").then(res => {
+        const create_data = res;
+        const dom = new JSDOM(create_data);
+        expect(2).to.equal(2);
+        done();
+      })
     });
   });
   it("should check page 1", done => {
