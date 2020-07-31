@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+</head>
+<style>
+    body {
+       background-image: url('/image2.jpg');
+   }
+   .center {
+ margin-left: auto;
+ margin-right: auto;
+ table-layout: fixed;
+}
+</style>
+<body>
+    <h1 style="text-align: center;">Sign Up</h1>
+    <form action="/" method="POST">
+         <table class="center">
+            <tr>
+                <td>
+                    <label for="todoInput">To-do</label>
+                </td>
+                <td><input type="text"
+                    id = "todoInput"
+                    name="item"
+                    placeholder="todo"
+                    required
+                    autofocus
+                
+                ></td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="addTodo" type="submit" class="btn btn-primary">Add</button>
+                </td>
+            </tr>
+        </form>
+            <tr><td>
+                <form method="POST" action ="/signout">
+                    <button  id="signOut" type="submit" class="btn btn-primary">Sign-Out</button>
+                </form>
+            </td></tr>
+                
+        </table>
+    
+</body>
+</html>

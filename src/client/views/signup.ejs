@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up</title>
+    <script>
+        function redirection(){
+            window.location.pathname ="./signin"
+        };
+    </script>
+</head>
+<style>
+    body {
+       background-image: url('/image2.jpg');
+   }
+   .center {
+ margin-left: auto;
+ margin-right: auto;
+ table-layout: fixed;
+}
+</style>
+<body>
+    <h1 style="text-align: center;">Sign Up</h1>
+    <form action="/signup" method="POST">
+        <table class="center">
+            <tr>
+                <td>
+                    <label for="nameInput">Name</label>
+                </td>
+                <td><input type="text"
+                    id = "nameInput"
+                    name="name"
+                    placeholder="Name"
+                    autofocus
+                
+                ></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="emailInput">Email</label>
+                </td>
+                <td><input type="text"
+                    id = "emailInput"
+                    name="email"
+                    placeholder="Email Adress"
+                    autofocus
+                
+                ></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="passwordInput">Password</label>
+                  
+                </td>
+                <td>  <input type="password"
+                    id = "passwordInput"
+                    name="password"
+                    placeholder="Password"
+
+                    autofocus
+                
+                ></td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="signupButton" type="submit" class="btn btn-primary">Sign-Up</button>
+                </td>
+            </tr>
+            </form>
+        </table>
+        <table><tr>
+            <td>
+                <button onclick="redirection()" id="signinButton" type="submit" class="btn">Sign-in</button>
+
+            </td>
+        </tr></table>
+</body>
+</html>

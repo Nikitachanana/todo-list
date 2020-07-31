@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-in</title>
+</head>
+<style>
+     body {
+        background-image: url('/image2.jpg');
+    }
+    .center {
+  margin-left: auto;
+  margin-right: auto;
+  table-layout: fixed;
+}
+</style>
+<body>
+    <h1 style="text-align: center;">Sign In</h1>
+    <form action="/signin" method="POST">
+        <table class="center">
+            <tr>
+                <td>
+                    <label for="emailInput">Email</label>
+                </td>
+                <td><input type="text"
+                    id = "emailInput"
+                    name="email"
+                    placeholder="Email Adress"
+                    required
+                    autofocus
+                
+                ></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="passwordInput">Password</label>
+                  
+                </td>
+                <td>  <input type="password"
+                    id = "passwordInput"
+                    name="password"
+                    placeholder="Password"
+                    required
+                    autofocus
+                
+                ></td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="signinButton" type="submit" class="btn btn-primary">Sign-in</button>
+                </td>
+                <td>
+                    <button id="signupButton" type="submit" class="btn btn-primary">Sign-Up</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
