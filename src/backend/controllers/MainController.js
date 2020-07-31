@@ -75,19 +75,60 @@ function addTodo(req, res) {
 
         }).then((todo) => {
             // console.log("todo has been created with values", todo);
+            req.session.todoID = todo.dataValues.id;
             res.redirect("/");
         }).catch(err => {
             res.redirect("/");
         });
     }
 }
+
+function del(req,res){
+    var lisId = req.params.id;
+    console.log(lisId)
+    List.destroy({where :{ id: lisId}})
+    .then(()=>{ return res.redirect("/")
+    }).catch(err=>{
+        console.log(err)
+    })
+}
+
+function done(req,res){
+    var lisId = req.params.id;
+    List.findOne({where: {id:lisId}}).then((data)=>{
+        if(data.dataValues.done ==="no"){
+            console.log("value before"+data.dataValues.done)
+            List.update({done:"yes"},{where :{id:lisId}});
+            console.log("value after"+data.dataValues.done)
+            return res.redirect("/")
+        }else if(data.dataValues.done ==="yes"){
+            console.log("value before"+data.dataValues.done)
+            List.update({done:"no"},{where :{id:lisId}});
+            console.log("value after"+data.dataValues.done)
+            return res.redirect("/")
+        };
+    }).catch(err=>{
+        console.log(err)
+    })
+};
+
+function edit(req,res){
+    var data = req.body.item;
+    var lisId = req.params.id;
+    List.findOne({where: {id:lisId}}).then(()=>{
+        List.update({item:data},{where:{id:lisId}});
+        return res.redirect("/")
+    }).catch(err=>{console.log(err)})
+}
+
 module.exports = {
     signup: signup,
     signin: signin,
-    profile: profile,
+    profile: profile, 
     checkSession: checkSession,
     check: check,
     logout: logout,
-    addTodo: addTodo
-
+    addTodo: addTodo,
+    del:del,
+    done:done
 }

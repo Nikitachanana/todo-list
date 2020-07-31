@@ -12,4 +12,6 @@ router.route("/signup").post( rController.signup)
 router.route("/signout").post(mainController.logout)
 router.route("/signin").post(loginController.signin)
 router.route("/").post(mainController.addTodo)
+router.route("/delete/:id").post(mainController.del)
+router.route("/done/:id").post(mainController.done)
 module.exports = router;

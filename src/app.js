@@ -25,7 +25,7 @@ app.use(express.static(__dirname+"/client/images"))
 app.use(bodyParser.urlencoded({extended:true}));
 app.use("/", mainRoutes);
 
-app.set("port", process.env.PORT || 5000); //Line11
+app.set("port", process.env.PORT || 4000); //Line11
 app.listen(app.get("port"), () => {
   console.log("Application running in port: " + app.get("port"));
 });

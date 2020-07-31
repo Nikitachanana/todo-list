@@ -1,50 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-up</title>
+    <script>
+        function Openform()
+{
+document.getElementById('myForm').style.display = '';
+}
+        
+    </script>
 </head>
 <style>
     body {
-       background-image: url('/image2.jpg');
-   }
-   .center {
- margin-left: auto;
- margin-right: auto;
- table-layout: fixed;
+        background-image: url('/image2.jpg');
+    }
+
+    .center {
+        margin-left: auto;
+        margin-right: auto;
+        table-layout: fixed;
+    }
+
+    .table2 {
+        font-size: 20px;
+        margin-left: auto;
+        margin-right: auto;
+        table-layout: fixed;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #333333;
+        padding: 20px;
+    }
+    .table2.td{
+  padding: 40px;
 }
+
+.table2 tr:nth-child(even) {background-color: #f2f2f2;}
+div {
+    text-align: center;
+    font-size: 24px;
+    font-style: italic;
+  background-color: rgb(165, 166, 252);
+  width: 100px;
+  border: 5px solid rgb(233, 248, 15);
+  padding: 30px;
+  margin: 20px;
+}
+.button {
+  background-color: #c2f50a;
+  border: 1px;
+  color: rgb(3, 1, 1);
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px 2px;
+  cursor: pointer;
+} 
+.button2 {background-color: #008CBA;} /* Blue */
 </style>
+
 <body>
     <h1 style="text-align: center;">Sign Up</h1>
     <form action="/" method="POST">
-         <table class="center">
+        <table class="center">
             <tr>
                 <td>
                     <label for="todoInput">To-do</label>
                 </td>
-                <td><input type="text"
-                    id = "todoInput"
-                    name="item"
-                    placeholder="todo"
-                    required
-                    autofocus
-                
-                ></td>
+                <td><input type="text" id="todoInput" name="item" placeholder="todo" required autofocus></td>
             </tr>
             <tr>
                 <td>
                     <button id="addTodo" type="submit" class="btn btn-primary">Add</button>
                 </td>
             </tr>
-        </form>
-            <tr><td>
-                <form method="POST" action ="/signout">
-                    <button  id="signOut" type="submit" class="btn btn-primary">Sign-Out</button>
+    </form>
+    <tr>
+        <td>
+            <form method="POST" action="/signout">
+                <button id="signOut" type="submit" class="btn btn-primary">Sign-Out</button>
+            </form>
+        </td>
+    </tr>
+    </table>
+    <% if(todo.length>0) {%>
+    
+        <%for(var i of todo){%>
+            <div>
+        <%=i.item %>
+            
+                <form action="/done/<%=i.id%>" method="post">
+                    <% if (i.done =="yes") { %>
+                        <button class="button button2">Done</button>
+                        <%} else { %>
+                        <button class="button ">Done</button>
+                        <% } %>
                 </form>
-            </td></tr>
-                
-        </table>
+            
+            <form ><button onclick="Openform()" class="button">Edit</button>
+            <div id="myform" style = "display:none"><form action=""  method="post">
+                <input type="text"
+                value = <%i.item%>
+                <button>submit</button>
+        
+            </form></div>
+        </form>
+            
+                <form action="/delete/<%=i.id%>" method="post"><Button class="button">Delete</Button></form>
+            
+        <%}%></div>
+    <%}%>
+    
     
 </body>
 </html>
