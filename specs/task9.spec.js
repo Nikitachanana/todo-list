@@ -36,7 +36,6 @@ describe("Functional Test #start_test", function() {
             let location = res.header["location"]
             assert.equal(location, "/signin");
             done();
-            process.exit(0);
       });
   });
 });
