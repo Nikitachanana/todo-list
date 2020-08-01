@@ -1,6 +1,6 @@
 const session = require("express-session")
 const dbConn = require("../databases/sqlite")
-const User = dbConn.User;
+const User = dbConn.users;
 const List = dbConn.lists;
 
 function checkSession(req, res, next) {
@@ -93,7 +93,7 @@ function del(req,res){
     }).catch(err=>{
         console.log(err)
     })
-}
+};
 
 function done(req,res){
     var lisId = req.params.id;
@@ -133,5 +133,5 @@ module.exports = {
     addTodo: addTodo,
     del:del,
     done:done,
-    edit: edit
+    edit:edit
 }

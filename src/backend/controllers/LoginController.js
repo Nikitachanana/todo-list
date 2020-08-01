@@ -1,5 +1,5 @@
 const dbConn = require("../databases/sqlite")
-const User = dbConn.User;
+const User = dbConn.users;
 const session = require("express-session");
 
 function signin(req,res){

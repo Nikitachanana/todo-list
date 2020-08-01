@@ -5,7 +5,7 @@ const sequelize = new Sequelize({
     path : "./src/backend/databases/database.sqlite",
 });
 
-const User = sequelize.define("users",{
+const users = sequelize.define("users",{
     name:{
         type : Sequelize.STRING,
         allowNull:false,
@@ -47,4 +47,4 @@ sequelize
                 console.log("Tables creates succesfully!")
             }).catch((err)=>{console.log(err)});
     
-module.exports = {User:User, lists:lists}
+module.exports = {users:users, lists:lists}

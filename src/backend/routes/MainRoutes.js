@@ -11,7 +11,7 @@ router.route("/signup").get(mainController.check,mainController.signup);
 router.route("/signup").post( rController.signup)
 router.route("/signout").post(mainController.logout)
 router.route("/signin").post(loginController.signin)
-router.route("/").post(mainController.addTodo)
+router.route("/add").post(mainController.addTodo)
 router.route("/delete/:id").post(mainController.del)
 router.route("/done/:id").post(mainController.done)
 router.route("/edit/:id").post(mainController.edit)

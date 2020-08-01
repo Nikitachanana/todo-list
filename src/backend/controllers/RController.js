@@ -1,5 +1,5 @@
 const dbConn = require("../databases/sqlite.js"); //Line1
-const User = dbConn.User; //Line2
+const User = dbConn.users; //Line2
 
 function signup(req, res) {
       const { name, email, password } = req.body;        

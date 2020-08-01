@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-up</title>
     <script>
-        function Openform() {
-            document.getElementById('myform').style.display = '';
+        function Openform(id) {
+            document.getElementById("myform" + id).style.display = '';
         }
 
     </script>
@@ -75,30 +75,33 @@
 
 <body>
     <h1 style="text-align: center;">Sign Up</h1>
-    <div><form action="/" method="POST">
-        <table class="center">
-            <tr>
-                <td>
-                    <label for="todoInput">To-do</label>
-                </td>
-                <td><input type="text" id="todoInput" name="item" placeholder="todo" required autofocus></td>
-            </tr>
-            <tr>
-                <td>
-                    <button id="addTodo" type="submit" class="btn btn-primary">Add</button>
-                </td>
-            </tr>
-    </form></div>
-    <div><tr>
-        <td>
-            <form method="POST" action="/signout">
-                <button id="signOut" type="submit" class="btn btn-primary">Sign-Out</button>
-            </form>
-        </td>
-    </tr></div>
+    <div>
+        <form action="/add" method="POST">
+            <table class="center">
+                <tr>
+                    <td>
+                        <label for="todoInput">To-do</label>
+                    </td>
+                    <td><input type="text" id="todoInput" name="item" placeholder="todo" required autofocus></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="addTodo" type="submit" class="btn btn-primary">Add</button>
+                    </td>
+                </tr>
+        </form>
+    </div>
+    <div>
+        <tr>
+            <td>
+                <form method="POST" action="/signout">
+                    <button id="signOut" type="submit" class="btn btn-primary">Sign-Out</button>
+                </form>
+            </td>
+        </tr>
+    </div>
     </table>
     <% if(todo.length>0) {%>
-
     <%for(var i of todo){%>
     <div class="box">
         <%=i.item %>
@@ -110,26 +113,16 @@
             <button class="button ">Done</button>
             <% } %>
         </form>
-            <div><button type="button" onclick="Openform()" class="button">Edit</button></div>
-            <div class="box" id="myform" style="display:none">
-                <form action="/edit/<%=i.id%>" method="post">
-                    <input type="text"
-                        name="item"
-                        value = <%=i.item%>>
-                    <button>save</button>
-                    
-    
-                </form>
-            </div>
-        
-
-
+        <div><button class="button" type="button" onclick=Openform(<%=i.id %>)>Edit</button></div>
         <form action="/delete/<%=i.id%>" method="post"><Button class="button">Delete</Button></form>
-
+        <div class="box" id="myform<%=i.id%>" style="display:none">
+            <form action="/edit/<%=i.id%>" method="post">
+                <input type="text" name="item" value=<%=i.item%>>
+                <button>save</button>
+            </form>
+        </div>
         <%}%></div>
     <%}%>
-
-
 </body>
 
 </html>
