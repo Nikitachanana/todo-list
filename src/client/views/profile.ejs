@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-up</title>
     <script>
-        function Openform()
-{
-document.getElementById('myForm').style.display = '';
-}
-        
+        function Openform() {
+            document.getElementById('myform').style.display = '';
+        }
+
     </script>
 </head>
 <style>
@@ -34,39 +33,49 @@ document.getElementById('myForm').style.display = '';
         border-color: #333333;
         padding: 20px;
     }
-    .table2.td{
-  padding: 40px;
-}
 
-.table2 tr:nth-child(even) {background-color: #f2f2f2;}
-div {
-    text-align: center;
-    font-size: 24px;
-    font-style: italic;
-  background-color: rgb(165, 166, 252);
-  width: 100px;
-  border: 5px solid rgb(233, 248, 15);
-  padding: 30px;
-  margin: 20px;
-}
-.button {
-  background-color: #c2f50a;
-  border: 1px;
-  color: rgb(3, 1, 1);
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 2px 2px;
-  cursor: pointer;
-} 
-.button2 {background-color: #008CBA;} /* Blue */
+    .table2.td {
+        padding: 40px;
+    }
+
+    .table2 tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .box {
+        text-align: center;
+        font-size: 24px;
+        font-style: italic;
+        background-color: rgb(165, 166, 252);
+        width: 100px;
+        border: 5px solid rgb(233, 248, 15);
+        padding: 30px;
+        margin: 20px;
+    }
+
+    .button {
+        background-color: #c2f50a;
+        border: 1px;
+        color: rgb(3, 1, 1);
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 2px 2px;
+        cursor: pointer;
+    }
+
+    .button2 {
+        background-color: #008CBA;
+    }
+
+    /* Blue */
 </style>
 
 <body>
     <h1 style="text-align: center;">Sign Up</h1>
-    <form action="/" method="POST">
+    <div><form action="/" method="POST">
         <table class="center">
             <tr>
                 <td>
@@ -79,43 +88,48 @@ div {
                     <button id="addTodo" type="submit" class="btn btn-primary">Add</button>
                 </td>
             </tr>
-    </form>
-    <tr>
+    </form></div>
+    <div><tr>
         <td>
             <form method="POST" action="/signout">
                 <button id="signOut" type="submit" class="btn btn-primary">Sign-Out</button>
             </form>
         </td>
-    </tr>
+    </tr></div>
     </table>
     <% if(todo.length>0) {%>
-    
-        <%for(var i of todo){%>
-            <div>
+
+    <%for(var i of todo){%>
+    <div class="box">
         <%=i.item %>
-            
-                <form action="/done/<%=i.id%>" method="post">
-                    <% if (i.done =="yes") { %>
-                        <button class="button button2">Done</button>
-                        <%} else { %>
-                        <button class="button ">Done</button>
-                        <% } %>
-                </form>
-            
-            <form ><button onclick="Openform()" class="button">Edit</button>
-            <div id="myform" style = "display:none"><form action=""  method="post">
-                <input type="text"
-                value = <%i.item%>
-                <button>submit</button>
-        
-            </form></div>
+
+        <form action="/done/<%=i.id%>" method="post">
+            <% if (i.done =="yes") { %>
+            <button class="button button2">Done</button>
+            <%} else { %>
+            <button class="button ">Done</button>
+            <% } %>
         </form>
-            
-                <form action="/delete/<%=i.id%>" method="post"><Button class="button">Delete</Button></form>
-            
+            <div><button type="button" onclick="Openform()" class="button">Edit</button></div>
+            <div class="box" id="myform" style="display:none">
+                <form action="/edit/<%=i.id%>" method="post">
+                    <input type="text"
+                        name="item"
+                        value = <%=i.item%>>
+                    <button>save</button>
+                    
+    
+                </form>
+            </div>
+        
+
+
+        <form action="/delete/<%=i.id%>" method="post"><Button class="button">Delete</Button></form>
+
         <%}%></div>
     <%}%>
-    
-    
+
+
 </body>
+
 </html>

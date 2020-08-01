@@ -132,5 +132,6 @@ module.exports = {
     logout: logout,
     addTodo: addTodo,
     del:del,
-    done:done
+    done:done,
+    edit: edit
 }
